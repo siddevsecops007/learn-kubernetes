@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: app-sec-1
+  name: app-sec-01
 data:
   APP1_PASSWD: QWJjQDEyMw==
 ---
@@ -23,7 +23,7 @@ spec:
       image: rkalluru/debug
       envFrom:
         - secretRef:
-            name: app-sec-1
+            name: app-sec-02
 ---
 kind: Pod
 apiVersion: v1
