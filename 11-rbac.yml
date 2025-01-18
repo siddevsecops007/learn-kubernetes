@@ -1,0 +1,38 @@
+### The Problem
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-sec-1
+data:
+  APP1_PASSWD: QWJjQDEyMw==
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-sec-02
+data:
+  APP2_PASSWD: eHl6QDMyMQ==
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: debug-app-01
+spec:
+  containers:
+    - name: debug
+      image: rkalluru/debug
+      envFrom:
+        - secretRef:
+            name: app-sec-1
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: debug-app-02
+spec:
+  containers:
+    - name: debug
+      image: rkalluru/debug
+      envFrom:
+        - secretRef:
+            name: app-sec-02
