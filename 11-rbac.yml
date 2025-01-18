@@ -23,6 +23,8 @@ spec:
       image: rkalluru/debug
       envFrom:
         - secretRef:
+            name: app-sec-01
+        - secretRef:
             name: app-sec-02
 ---
 kind: Pod
