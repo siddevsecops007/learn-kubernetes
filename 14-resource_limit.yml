@@ -14,7 +14,7 @@ spec:
           memory: "128Mi"
           cpu: "500m"
     - name: log-aggregator
-      image: nginx
+      image: rkalluru/debug
       resources:
         requests:
           memory: "64Mi"
