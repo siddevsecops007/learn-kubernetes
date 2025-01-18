@@ -50,6 +50,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web
+  namespace: web
 spec:
   type: ClusterIP
   selector:
@@ -63,6 +64,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: app
+  namespace: app
 spec:
   type: ClusterIP
   selector:
@@ -95,7 +97,6 @@ spec:
   egress:
     - { }
 
----
 ---
 apiVersion: v1
 kind: Namespace
