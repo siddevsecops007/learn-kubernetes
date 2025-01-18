@@ -27,7 +27,7 @@ kind: Role
 metadata:
   name: app1-role
 rules:
-  - apiGroups: ["v1"]
+  - apiGroups: ["*"]
     resources: ["secrets"]
     resourceNames: ["app-sec-01"]
     verbs: ["get"]
@@ -51,9 +51,9 @@ roleRef:
   kind: Role
   name: app1-role
 subjects:
-  - kind: Group
-    name: system:serviceaccounts:app1
-    apiGroup: rbac.authorization.k8s.io
+  - kind: ServiceAccount
+    name: app1
+    namespace: default
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -64,9 +64,9 @@ roleRef:
   kind: Role
   name: app2-role
 subjects:
-  - kind: Group
-    name: system:serviceaccounts:app2
-    apiGroup: rbac.authorization.k8s.io
+  - kind: ServiceAccount
+    name: app2
+    namespace: default
 ---
 kind: Pod
 apiVersion: v1
