@@ -71,3 +71,44 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: app-allow-complete-ns
+  namespace: app
+spec:
+  podSelector:
+    matchLabels:
+      appType: app
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              ns: web
+      ports:
+        - protocol: TCP
+          port: 80
+  egress:
+    - { }
+
+---
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: debug
+  namespace: demo
+spec:
+  containers:
+    - name: debug
+      image: rkalluru/debug
+
