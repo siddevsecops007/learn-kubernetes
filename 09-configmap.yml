@@ -16,5 +16,5 @@ spec:
     - name: debug
       image: rkalluru/debug
       env:
-        name: URL
-        value: yahoo.com
+        - name: URL
+          value: yahoo.com
