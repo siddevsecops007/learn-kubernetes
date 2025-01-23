@@ -18,11 +18,8 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
-              memory: "64Mi"
-              cpu: "250m"
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
+              memory: "20Mi"
+              cpu: "20m"
 
 ---
 apiVersion: "autoscaling.k8s.io/v1"
@@ -39,8 +36,8 @@ spec:
       - containerName: '*'
         minAllowed:
           cpu: 20m
-          memory: 5Mi
+          memory: 20Mi
         maxAllowed:
           cpu: 100m
-          memory: 50Mi
+          memory: 100Mi
         controlledResources: ["cpu"]
