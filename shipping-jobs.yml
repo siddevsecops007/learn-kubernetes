@@ -71,7 +71,7 @@ spec:
             - name: DB_USER
               value: root
             - name: DB_PASS
-              value: RoboShop@1
+              value: Roboshop@1
       restartPolicy: Never
 #---
 #apiVersion: batch/v1
