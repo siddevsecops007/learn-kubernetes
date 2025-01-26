@@ -1,0 +1,103 @@
+#apiVersion: batch/v1
+#kind: Job
+#metadata:
+#  name: shipping-schema-app-user
+#spec:
+#  template:
+#    spec:
+#      containers:
+#        - name: schema
+#          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+#          env:
+#            - name: DB_TYPE
+#              value: mysql
+#            - name: APP_GIT_URL
+#              value: https://github.com/roboshop-devops-project-v3/shipping
+#            - name: DB_HOST
+#              value: mysql-dev.siddevsecops.icu
+#            - name: SCHEMA_FILE
+#              value: db/app-user.sql
+#            - name: DB_USER
+#              value: root
+#            - name: DB_PASS
+#              value: RoboShop@1
+#      restartPolicy: Never
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: shipping-schema-app-user
+spec:
+  template:
+    spec:
+      containers:
+        - name: schema-app-user
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: DB_TYPE
+              value: mysql
+            - name: APP_GIT_URL
+              value: https://github.com/roboshop-devops-project-v3/shipping
+            - name: DB_HOST
+              value: mysql-dev.siddevsecops.icu
+            - name: DB_USER
+              value: root
+            - name: DB_PASS
+              value: RoboShop@1
+            - name: SCHEMA_FILE
+              value: db/app-user.sql
+      restartPolicy: Never
+
+
+
+#---
+#apiVersion: batch/v1
+#kind: Job
+#metadata:
+#  name: shipping-schema
+#spec:
+#  template:
+#    spec:
+#      containers:
+#        - name: schema
+#          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+#          env:
+#            - name: DB_TYPE
+#              value: mysql
+#            - name: APP_GIT_URL
+#              value: https://github.com/roboshop-devops-project-v3/shipping
+#            - name: DB_HOST
+#              value: mysql-dev.siddevsecops.icu
+#            - name: SCHEMA_FILE
+#              value: db/schema.sql
+#            - name: DB_USER
+#              value: root
+#            - name: DB_PASS
+#              value: RoboShop@1
+#      restartPolicy: Never
+#---
+#apiVersion: batch/v1
+#kind: Job
+#metadata:
+#  name: shipping-master-data
+#spec:
+#  template:
+#    spec:
+#      containers:
+#        - name: schema
+#          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+#          env:
+#            - name: DB_TYPE
+#              value: mysql
+#            - name: APP_GIT_URL
+#              value: https://github.com/roboshop-devops-project-v3/shipping
+#            - name: DB_HOST
+#              value: mysql-dev.siddevsecops.icu
+#            - name: SCHEMA_FILE
+#              value: db/master-data.sql
+#            - name: DB_USER
+#              value: root
+#            - name: DB_PASS
+#              value: RoboShop@1
+#      restartPolicy: Never
+#
