@@ -78,7 +78,7 @@ spec:
             - containerPort: 8080
           env:
             - name: MONGO
-              value: true
+              value: "true"
             - name: MONGO_URL
               value: "mongodb://mongodb-dev.siddevsecops.icu:27017/catalogue"
 ---
@@ -141,7 +141,7 @@ spec:
             - containerPort: 8080
           env:
             - name: MONGO
-              value: true
+              value: "true"
             - name: MONGO_URL
               value: "mongodb://mongodb-dev.siddevsecops.icu:27017/users"
             - name: REDIS_URL
