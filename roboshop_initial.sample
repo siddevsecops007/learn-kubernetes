@@ -48,11 +48,12 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: frontend
+    appName: frontend
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -88,11 +89,12 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: catalogue
+    appName: catalogue
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+
 ---
 apiVersion: batch/v1
 kind: Job
@@ -114,6 +116,7 @@ spec:
             - name: SCHEMA_FILE
               value: db/master-data.js
       restartPolicy: Never
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -151,11 +154,12 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: user
+    appName: user
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -193,11 +197,12 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: cart
+    appName: cart
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -222,7 +227,7 @@ spec:
             - containerPort: 8080
           env:
             - name: CART_ENDPOINT
-              value: "cart:8080"
+              value: cart:8080
             - name: DB_HOST
               value: mysql-dev.siddevsecops.icu
 ---
@@ -233,11 +238,89 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: shipping
+    appName: shipping
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: shipping-app-user
+spec:
+  template:
+    spec:
+      containers:
+        - name: app-user
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: DB_TYPE
+              value: mysql
+            - name: APP_GIT_URL
+              value: https://github.com/roboshop-devops-project-v3/shipping
+            - name: DB_HOST
+              value: mysql-dev.siddevsecops.icu
+            - name: DB_USER
+              value: root
+            - name: DB_PASS
+              value: RoboShop@1
+            - name: SCHEMA_FILE
+              value: db/app-user.sql
+      restartPolicy: Never
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: shipping-schema
+spec:
+  template:
+    spec:
+      containers:
+        - name: schema
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: DB_TYPE
+              value: mysql
+            - name: APP_GIT_URL
+              value: https://github.com/roboshop-devops-project-v3/shipping
+            - name: DB_HOST
+              value: mysql-dev.siddevsecops.icu
+            - name: DB_USER
+              value: root
+            - name: DB_PASS
+              value: RoboShop@1
+            - name: SCHEMA_FILE
+              value: db/schema.sql
+      restartPolicy: Never
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: shipping-master-data
+spec:
+  template:
+    spec:
+      containers:
+        - name: master-data
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: DB_TYPE
+              value: mysql
+            - name: APP_GIT_URL
+              value: https://github.com/roboshop-devops-project-v3/shipping
+            - name: DB_HOST
+              value: mysql-dev.siddevsecops.icu
+            - name: DB_USER
+              value: root
+            - name: DB_PASS
+              value: RoboShop@1
+            - name: SCHEMA_FILE
+              value: db/master-data.sql
+      restartPolicy: Never
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -283,11 +366,14 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: payment
+    appName: payment
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+
+
+
 
 
 
