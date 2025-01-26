@@ -48,22 +48,31 @@
 #              value: db/app-user.sql
 #      restartPolicy: Never
 ---
+---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: pi
+  name: shipping-schema-user
 spec:
   template:
     spec:
       containers:
-        - name: redhat
-          image: redhat/ubi9
-          command: ["sleep",  "10"]
+        - name: schema
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: DB_TYPE
+              value: mysql
+            - name: APP_GIT_URL
+              value: https://github.com/roboshop-devops-project-v3/shipping
+            - name: DB_HOST
+              value: mysql-dev.siddevsecops.icu
+            - name: SCHEMA_FILE
+              value: db/app-user.sql
+            - name: DB_USER
+              value: root
+            - name: DB_PASS
+              value: RoboShop@1
       restartPolicy: Never
-
-
-
-
 #---
 #apiVersion: batch/v1
 #kind: Job
