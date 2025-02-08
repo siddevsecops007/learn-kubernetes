@@ -134,7 +134,8 @@ spec:
     spec:
       containers:
         - name: user
-          image: public.ecr.aws/w8x4g9h7/roboshop-v3/user
+#          image: public.ecr.aws/w8x4g9h7/roboshop-v3/user
+          image: 216989125516.dkr.ecr.us-east-1.amazonaws.com/roboshop-user:8ae3753eaad838ca4e438587409370c690d86b1f
           ports:
             - containerPort: 8080
           env:
