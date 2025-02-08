@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: frontend
-#          image: public.ecr.aws/w8x4g9h7/roboshop-v3/frontend
-          image: 216989125516.dkr.ecr.us-east-1.amazonaws.com/roboshop-frontend:4b298243d959f90fdc4aa47d096556be9fcc9af2
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/frontend
+#          image: 216989125516.dkr.ecr.us-east-1.amazonaws.com/roboshop-frontend:4b298243d959f90fdc4aa47d096556be9fcc9af2
           ports:
             - containerPort: 80
           env:
@@ -177,7 +177,8 @@ spec:
     spec:
       containers:
         - name: cart
-          image: public.ecr.aws/w8x4g9h7/roboshop-v3/cart
+#          image: public.ecr.aws/w8x4g9h7/roboshop-v3/cart
+          image: 216989125516.dkr.ecr.us-east-1.amazonaws.com/roboshop-cart:2086000664145ddc2cef1c4a85e0c40ff6160405
           ports:
             - containerPort: 8080
           env:
