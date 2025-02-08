@@ -73,8 +73,8 @@ spec:
     spec:
       containers:
         - name: catalogue
-#          image: public.ecr.aws/w8x4g9h7/roboshop-v3/catalogue
-          image: 216989125516.dkr.ecr.us-east-1.amazonaws.com/roboshop-catalogue:17804be9015cea3ac03cad5559c4ffe6abff294d
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/catalogue
+#          image: 216989125516.dkr.ecr.us-east-1.amazonaws.com/roboshop-catalogue:17804be9015cea3ac03cad5559c4ffe6abff294d
           ports:
             - containerPort: 8080
           env:
@@ -135,8 +135,8 @@ spec:
     spec:
       containers:
         - name: user
-#          image: public.ecr.aws/w8x4g9h7/roboshop-v3/user
-          image: 216989125516.dkr.ecr.us-east-1.amazonaws.com/roboshop-user:8ae3753eaad838ca4e438587409370c690d86b1f
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/user
+#          image: 216989125516.dkr.ecr.us-east-1.amazonaws.com/roboshop-user:8ae3753eaad838ca4e438587409370c690d86b1f
           ports:
             - containerPort: 8080
           env:
@@ -178,8 +178,8 @@ spec:
     spec:
       containers:
         - name: cart
-#          image: public.ecr.aws/w8x4g9h7/roboshop-v3/cart
-          image: 216989125516.dkr.ecr.us-east-1.amazonaws.com/roboshop-cart:2086000664145ddc2cef1c4a85e0c40ff6160405
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/cart
+#          image: 216989125516.dkr.ecr.us-east-1.amazonaws.com/roboshop-cart:2086000664145ddc2cef1c4a85e0c40ff6160405
           ports:
             - containerPort: 8080
           env:
@@ -221,8 +221,8 @@ spec:
     spec:
       containers:
         - name: shipping
-#          image: public.ecr.aws/w8x4g9h7/roboshop-v3/shipping
-          image: 216989125516.dkr.ecr.us-east-1.amazonaws.com/roboshop-shipping:8fece2cf1c0bd0fe76a8c6dea89dbb33f46f3c6c
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/shipping
+#          image: 216989125516.dkr.ecr.us-east-1.amazonaws.com/roboshop-shipping:8fece2cf1c0bd0fe76a8c6dea89dbb33f46f3c6c
           ports:
             - containerPort: 8080
           env:
@@ -262,8 +262,8 @@ spec:
     spec:
       containers:
         - name: payment
-#          image: public.ecr.aws/w8x4g9h7/roboshop-v3/payment
-          image: 216989125516.dkr.ecr.us-east-1.amazonaws.com/roboshop-payment:45cf9ee5cea4e94e36e8dd208aa582aaf0deffa3
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/payment
+#          image: 216989125516.dkr.ecr.us-east-1.amazonaws.com/roboshop-payment:45cf9ee5cea4e94e36e8dd208aa582aaf0deffa3
           ports:
             - containerPort: 8080
           env:
