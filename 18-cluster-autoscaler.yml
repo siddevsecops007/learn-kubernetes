@@ -169,7 +169,6 @@ spec:
             - --cloud-provider=aws
             - --skip-nodes-with-local-storage=false
             - --nodes=1:10:eks-ng-1-facbbe72-1c5f-82f9-726e-fa25c546ea49
-
           volumeMounts:
             - name: ssl-certs
               mountPath: /etc/ssl/certs/ca-certificates.crt # /etc/ssl/certs/ca-bundle.crt for Amazon Linux Worker Nodes
