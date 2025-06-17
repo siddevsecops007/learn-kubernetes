@@ -17,7 +17,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    appName: service-nginx-1
+    appName: service-nginx-11
   ports:
     - protocol: TCP
       port: 80
